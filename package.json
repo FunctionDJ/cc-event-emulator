@@ -1,0 +1,64 @@
+{
+  "name": "event-emulator",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12.20.7",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "bootstrap": "^4.6.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-use-localstorage": "^3.5.3",
+    "typescript": "^4.2.3",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "lint": "eslint . --ext .tsx,.ts --max-warnings=0",
+    "typecheck": "tsc -p ./tsconfig.json --noEmit"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "husky": "^5.2.0"
+  }
+}

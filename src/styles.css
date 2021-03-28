@@ -1,0 +1,76 @@
+img {
+  image-rendering: crisp-edges;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: black !important;
+  background-color: white;
+  border: 1px solid #bbb;
+}
+
+.custom-switch > * {
+  cursor: pointer;
+}
+
+.action-container > * {
+  margin-bottom: 0;
+}
+
+:root {
+  font-family: sans-serif;
+}
+
+.pause {
+  color: blue;
+  font-weight: normal;
+  position: relative;
+}
+
+.name-tooltip {
+  position: relative;
+}
+
+.name-tooltip:hover::before {
+  color: white;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.pause:hover::before {
+  color: white;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "Pause";
+  position: absolute;
+  bottom: 100%;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.expression-debug-heading {
+  font-size: 12px;
+  color: white;
+  padding: 2px;
+  border-bottom: 4px solid black;
+}
+
+.alert-message {
+  color: white;
+  background-color: hsl(0, 0%, 30%);
+  border-color: black;
+}
+
+.alternating-rows:nth-child(odd) {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
