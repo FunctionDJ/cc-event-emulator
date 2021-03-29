@@ -1,24 +1,21 @@
 import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Alert } from "react-bootstrap";
 import { Wait_T } from "../../interfaces/actions";
+import { AC } from "../action";
+import { ActionBase } from "../action-base";
 
-interface Props {
-  data: Wait_T
-}
-
-export const Wait = ({ data }: Props) => {
-  return (
-    <>
-      <Alert variant="primary">
-        <FontAwesomeIcon icon={faStopwatch}/>
-        {" Wait "}
+export const Wait: AC<Wait_T> = ({ data }) => (
+  <ActionBase
+    data={data}
+    title={
+      <>
+        {"Wait "}
         <code>
           {data.time}
         </code>
           {" seconds"}
         {data.ignoreSlowDown && ", ignore slow down"}
-      </Alert>
-    </>
-  );
-};
+      </>
+    }
+    icon={faStopwatch}
+  />
+);

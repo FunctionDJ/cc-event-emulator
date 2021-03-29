@@ -1,14 +1,10 @@
 import { faCalculator } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
-import { Alert } from "react-bootstrap";
 import { ChangeVarNumber_T } from "../../interfaces/actions";
+import { AC } from "../action";
+import { ActionBase } from "../action-base";
 
-interface Props {
-  data: ChangeVarNumber_T
-}
-
-export const ChangeVarNumber = ({ data }: Props) => {
+export const ChangeVarNumber: AC<ChangeVarNumber_T> = ({ data }) => {
   const value = (
     <code>
       {typeof data.value === "object" // this is so stupid
@@ -66,10 +62,10 @@ export const ChangeVarNumber = ({ data }: Props) => {
   }
 
   return (
-    <Alert variant="primary">
-      <FontAwesomeIcon icon={faCalculator}/>
-      {" "}
-      {content}
-    </Alert>
+    <ActionBase
+      data={data}
+      icon={faCalculator}
+      title={content}
+    />
   );
 };

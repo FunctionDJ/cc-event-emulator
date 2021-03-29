@@ -1,10 +1,13 @@
+import { AC } from "../action";
+import { ActionBase } from "../action-base";
 import { ShowMsg_T } from "../../interfaces/actions";
 import { Message } from "../message";
 
-interface Props {
-  data: ShowMsg_T
-}
-
-export const ShowMsg = ({ data }: Props) => {
-  return <Message data={data.message}/>;
-};
+export const ShowMsg: AC<ShowMsg_T> = ({ data }) => (
+  <ActionBase
+    data={data}
+    icon={null}
+  >
+    <Message data={data.message}/>
+  </ActionBase>
+);

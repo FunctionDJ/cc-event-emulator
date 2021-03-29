@@ -88,7 +88,7 @@ export const Message = ({ data }: Props) => {
 
         if (category !== "combat") {
           output.push(
-            <span>[implement me!: {category}</span>
+            <span>[implement me!: {category}]</span>
           );
 
           break;
@@ -101,7 +101,10 @@ export const Message = ({ data }: Props) => {
               color: color ?? ""
             }}
           >
-            {enemies[third].name[language]}
+            {enemies[third]
+              ? enemies[third].name[language]
+              : `[missing: ${third}, ${language}]`
+            }
           </span>
         );
 
@@ -118,14 +121,6 @@ export const Message = ({ data }: Props) => {
       {output}
     </Alert>
   );
-
-  // if (debug) {
-  //   return (
-  //     <span className="message">
-  //       {text}
-  //     </span>
-  //   )
-  // }
 
   // let key = 0;
 

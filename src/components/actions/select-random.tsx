@@ -1,25 +1,23 @@
-import { Action } from "../action";
+import { Action, AC } from "../action";
 import { SelectRandom_T } from "../../interfaces/actions";
-import { flexGap, flexGapRem } from "../../constants";
+import { flexGapRem } from "../../constants";
 import { Alert } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRandom } from "@fortawesome/free-solid-svg-icons";
+import { ActionBase } from "../action-base";
 
-interface Props {
-  data: SelectRandom_T
-}
-
-export const SelectRandom = ({ data }: Props) => {
+export const SelectRandom: AC<SelectRandom_T> = ({ data }) => {
   return (
-    <Alert variant="success" className="action" style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: flexGapRem
-    }}>
-      <span>
-        <FontAwesomeIcon icon={faRandom}/>
-        {" Select Random"}
-      </span>
+    <ActionBase
+      data={data}
+      icon={faRandom}
+      title="Select Random"
+      variant="success"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: flexGapRem
+      }}
+    >
       {data.options.map((o, i) => (
         <Alert variant="dark" key={i} style={{
           display: "flex",
@@ -47,6 +45,6 @@ export const SelectRandom = ({ data }: Props) => {
           </div>
         </Alert>
       ))}
-    </Alert>
+    </ActionBase>
   );
 };

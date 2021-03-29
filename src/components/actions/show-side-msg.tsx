@@ -4,7 +4,7 @@ import { Expression } from "../expression/expression";
 import { MyContext } from "../../app";
 import { useContext } from "react";
 import { getCharacterName } from "../../helpers/get-character-name";
-import { Alert } from "react-bootstrap";
+import { ActionBase } from "../action-base";
 
 interface Props {
   data: ShowSideMsg_T
@@ -16,9 +16,13 @@ export const ShowSideMsg = ({ data }: Props) => {
   const niceName = getCharacterName(data.person.person);
 
   return (
-    <Alert variant="secondary">
+    <ActionBase
+      data={data}
+      icon={null}
+      variant="secondary"
+    >
       {debug && (
-        <span>
+        <p className="mb-1">
           Talking:
           {" "}
           <span
@@ -27,7 +31,7 @@ export const ShowSideMsg = ({ data }: Props) => {
           >
             {niceName || data.person.person}
           </span>
-        </span>
+        </p>
       )}
 
       <div className="action-container" style={{
@@ -35,9 +39,9 @@ export const ShowSideMsg = ({ data }: Props) => {
         gap: "0.5rem",
         alignItems: "center"
       }}>
-        <Expression data={data.person}/>
+        <Expression expressionData={data.person}/>
         <Message data={data.message}/>
       </div>
-    </Alert>
+    </ActionBase>
   );
 };

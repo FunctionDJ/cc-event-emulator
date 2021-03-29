@@ -1,5 +1,6 @@
 import { Character } from "../../data/sprites";
 import { Person } from "../../interfaces/common-types";
+import { AlertLogButton } from "../alert-log-button";
 
 interface Props {
   person: Person
@@ -14,17 +15,15 @@ export const SpriteDebug = ({ character, person }: Props) => {
   ));
 
   return (
-    <div style={{
+    <pre style={{
       color: "white",
       fontSize: 10,
       padding: 4
     }}>
-      {data.map((_, i) => (
-        <p key={i}>
-          {expression.faces[0][i]}
-        </p>
-      ))
-      }
-    </div>
+      Expressions:
+      {data.map((_, i) => "\n" + expression.faces[0][i])}
+      {"\n"}
+      <AlertLogButton data={data}/>
+    </pre>
   );
 };

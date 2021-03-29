@@ -1,12 +1,15 @@
 import { Action } from "../action";
 import { If_T, IfElse_T } from "../../interfaces/action-groups/if-actions";
 import { Alert } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 
 export const If = ({ data }: { data: If_T | IfElse_T }) => {
   return (
     <Alert variant="warning">
       <p>
-        If
+        <FontAwesomeIcon icon={faCodeBranch}/>
+        {" If"}
         <code className="ml-2">{data.condition}</code>
       </p>
       <div style={{

@@ -1,10 +1,7 @@
 import { ShowCenterMsg_T } from "../../interfaces/actions";
+import { AC } from "../action";
 import { Message } from "../message";
 
-interface Props {
-  data: ShowCenterMsg_T
-}
-
-export const ShowCenterMsg = ({ data }: Props) => {
-  return <Message data={data.text}/>;
-};
+export const ShowCenterMsg: AC<ShowCenterMsg_T> = ({ data }) => (
+  <Message data={data.text}/>
+);

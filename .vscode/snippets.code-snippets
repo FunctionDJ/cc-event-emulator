@@ -1,0 +1,22 @@
+{
+  "ActionComponent": {
+    "scope": "typescriptreact",
+    "prefix": "ac",
+    "description": "General component to render an Action, converts file name from kebab to pascal case",
+    "body": [
+      "import { AC } from \"../action\";",
+      "import { ActionBase } from \"../action-base\";",
+      "import { ${TM_FILENAME_BASE/(\\w)(\\w+)(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?/${1:/upcase}${2}${3:/upcase}${4}${5:/upcase}${6}${7:/upcase}${8}${9:/upcase}${10}/}_T } from \"../../interfaces/actions\";",
+      "",
+      "export const ${TM_FILENAME_BASE/(\\w)(\\w*)(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?/${1:/upcase}${2}${3:/upcase}${4}${5:/upcase}${6}${7:/upcase}${8}${9:/upcase}${10}/}: AC<${TM_FILENAME_BASE/(\\w)(\\w*)(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?(?:-(\\w)(\\w*))?/${1:/upcase}${2}${3:/upcase}${4}${5:/upcase}${6}${7:/upcase}${8}${9:/upcase}${10}/}_T> = ({ data }) => (",
+      "  <ActionBase",
+      "    data={data}",
+      "    icon={$2}",
+      "    title={$3}",
+      "  >",
+      "    $4",
+      "  </ActionBase>",
+      ");"
+    ]
+  }
+}

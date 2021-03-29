@@ -1,7 +1,7 @@
 import { Language, LanguageValues } from "./interfaces/common-types";
 import { ChangeEvent, Dispatch } from "react";
 
-import { Col, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { EventSwitcher } from "./components/controls/event-switcher";
 
 interface Props {

@@ -18,14 +18,14 @@ export const Sprite = ({ data, src, charName }: Props) => {
         style={{
           position: "absolute",
           overflow: "hidden",
-          left: data.destX - (data?.subX || 0),
-          top: data.destY - (data?.subY || 0),
+          left: data.destX - (data?.subX ?? 0),
+          top: data.destY - (data?.subY ?? 0),
           width: data.width,
           height: data.height
         }}
       >
         <img
-          src={`/img/${src}`}
+          src={`/img/sprites/${src}`}
           alt={charName}
           style={{
             position: "relative",

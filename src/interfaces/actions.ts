@@ -22,6 +22,20 @@ export interface ShowSideMsg_T {
   person: Person
 }
 
+export interface AddMsgPerson_T {
+  type: "ADD_MSG_PERSON"
+  name?: Translations
+  side: "LEFT" | "RIGHT"
+  order: number
+  clearSide: false
+  person: Person
+}
+
+export interface SetForceCombat_T {
+  type: "SET_FORCE_COMBAT";
+  value: boolean;
+}
+
 export interface ShowMsg_T {
   type: "SHOW_MSG"
   message: Translations
@@ -40,6 +54,11 @@ export interface Wait_T {
   type: "WAIT";
   ignoreSlowDown?: boolean;
   time: number;
+}
+
+export interface ShowArenaRoundGui_T {
+  type: "SHOW_ARENA_ROUND_GUI";
+  wait: false;
 }
 
 export interface ShowCenterMsg_T {
@@ -127,18 +146,12 @@ export type Action =
     type: "REMOVE_PLAYER_CAMERA_TARGET";
     entity: Entity;
   }
-  | {
-    type: "SHOW_ARENA_ROUND_GUI";
-    wait: false;
-  }
+  | ShowArenaRoundGui_T // :)
   | {
     type: "SET_ALL_ENEMY_TARGET";
     target: Entity;
   }
-  | {
-    type: "SET_FORCE_COMBAT";
-    value: boolean;
-  }
+  | SetForceCombat_T
   | {
     type: "CLEAR_EFFECTS";
     entity: Entity;
@@ -391,14 +404,7 @@ export type Action =
     type: "PAUSE_BGM"
     mode: "SLOW" | "FAST" | "MEDIUM_OUT"
   }
-  | {
-    type: "ADD_MSG_PERSON"
-    name?: Translations
-    side: "LEFT" | "RIGHT"
-    order: number
-    clearSide: false
-    person: Person
-  }
+  | AddMsgPerson_T
   | {
     type: "SPAWN_ARENA_WAVE";
     focusPlayer: false;

@@ -1,12 +1,15 @@
+import { faTerminal } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { MyContext } from "../app";
 
 interface Props {
-  data: any
+  data: any,
+  floatRight?: true
 }
 
-export const AlertLogButton = ({ data }: Props) => {
+export const AlertLogButton = ({ data, floatRight }: Props) => {
   const { debug } = useContext(MyContext);
 
   if (!debug) {
@@ -14,15 +17,24 @@ export const AlertLogButton = ({ data }: Props) => {
   }
 
   return (
-    <Badge
-      pill
-      as="a"
-      href="#"
-      variant="light"
-      className="mx-2 badge-button"
-      onClick={() => console.log(data)}
+    <OverlayTrigger
+      placement="top"
+      overlay={
+        <Tooltip id="tooltip-log">
+          Log data to console
+        </Tooltip>
+      }
     >
-      {">"}_ Log data to console
-    </Badge>
+      <Badge
+        pill
+        as="a"
+        href="#/"
+        variant="light"
+        className={floatRight ? "float-right" : ""}
+        onClick={() => console.log(data)}
+      >
+        <FontAwesomeIcon icon={faTerminal}/>
+      </Badge>
+    </OverlayTrigger>
   );
 };

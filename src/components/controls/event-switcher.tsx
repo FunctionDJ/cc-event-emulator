@@ -9,26 +9,50 @@ interface Props {
   setCurrentEvent: Dispatch<string>
 }
 
+const eventKeys = Object.keys(database.commonEvents);
+
+function getEventIndex(eventKey: string): number|null {
+  const entries = Object.entries(eventKeys);
+
+  const touple = entries.find(([, value]) => value === eventKey);
+
+  if (!touple) {
+    return null;
+  }
+
+  return parseInt(touple[0], 10);
+}
+
 export const EventSwitcher = ({
   currentEvent,
   setCurrentEvent
 }: Props) => {
+  const index = getEventIndex(currentEvent);
+
+  if (index === null) {
+    localStorage.removeItem("current-event");
+    throw new Error("unhandled invalid event name :(");
+  }
+
+  const hasPrevious = index - 1 >= 0;
+  const hasNext = index + 1 < eventKeys.length;
+
   function handleCurrentEventChange(event: ChangeEvent<HTMLSelectElement>) {
     setCurrentEvent(event.target.value);
   }
 
   function gotoNextPreviousEvent(next: boolean) {
     const change = next ? 1 : -1;
+    const newIndex = change + index!;
 
-    const touple = Object.entries(Object.keys(database.commonEvents)).find(([, value]) => (
-      value === currentEvent
-    ));
+    const belowZero = newIndex < 0;
+    const aboveEventsLength = newIndex > eventKeys.length;
 
-    if (!touple) {
+    if (belowZero || aboveEventsLength) {
       return;
     }
 
-    setCurrentEvent(Object.keys(database.commonEvents)[parseInt(touple[0], 10) + change]);
+    setCurrentEvent(eventKeys[newIndex]);
   }
 
   return (
@@ -36,6 +60,7 @@ export const EventSwitcher = ({
       <InputGroup.Prepend>
         <Button
           size="sm"
+          disabled={!hasPrevious}
           onClick={() => gotoNextPreviousEvent(false)}
         >
           <FontAwesomeIcon icon={faCaretLeft}/>
@@ -48,7 +73,7 @@ export const EventSwitcher = ({
         value={currentEvent || ""}
         onChange={handleCurrentEventChange}
       >
-        {Object.keys(database.commonEvents).map(key => (
+        {eventKeys.map(key => (
           <option key={key} value={key}>
             {key}
           </option>
@@ -58,6 +83,7 @@ export const EventSwitcher = ({
       <InputGroup.Append>
         <Button
           size="sm"
+          disabled={!hasNext}
           onClick={() => gotoNextPreviousEvent(true)}
         >
           <FontAwesomeIcon icon={faCaretRight}/>
